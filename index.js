@@ -4,11 +4,15 @@ const path = require('path');
 const bodyParser = require('body-parser')
 const fsPromises = require("node:fs/promises");
 const fs = require("node:fs")
+var cors = require('cors')
 
 
 const PORT = process.env.PORT || 3002;
 const app = express();
 
+app.use(cors({
+	origin: "*"
+}))
 app.use(bodyParser.json());
 
 app.get("/memes", async (req, res) => {
